@@ -5,26 +5,51 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 
 public class MainActivity extends Activity {
+
+    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String url = "http://tranumnet.dk/";
-        WebView view = (WebView) this.findViewById(R.id.webView);
-        view.getSettings().setJavaScriptEnabled(true);
-        view.loadUrl(url);
+        // mWebView tilgår WebView fra activity_main
+        mWebView = (WebView) findViewById(R.id.activity_main_webview);
 
-         /*mWebView = (WebView) findViewById(R.id.webView);
-        mWebView.loadUrl("http://udvikling.tranumnet.dk//");*/
+        // Tilslutning af Javascript
 
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // Tilgå tranumnet gennem URL'en
+        mWebView.loadUrl("http://www.tranumnet.dk");
+
+        // Stop lokale links og omdiriger fra åben browser istedet brug WebView
+        mWebView.setWebViewClient(new MyAppWebViewClient());
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        if (mWebView.canGoBack())
+        {
+            mWebView.goBack();
+        } else
+        {
+            super.onBackPressed();
+        }
     }
 
 
@@ -50,6 +75,22 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static class PlaceholderFragment extends Fragment
+    {
+
+        public PlaceholderFragment()
+        {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState)
+        {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            return rootView;
+        }
+    }
+
 
     public boolean isOnline()
     {
@@ -60,3 +101,4 @@ public class MainActivity extends Activity {
 
     }
 }
+
