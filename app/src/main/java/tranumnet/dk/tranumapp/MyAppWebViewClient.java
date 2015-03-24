@@ -1,17 +1,12 @@
 package tranumnet.dk.tranumapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-/**
- * Created by Benjamin on 28-02-2015.
+/*
+  Created by Benjamin on 28-02-2015.
  */
 public class MyAppWebViewClient extends WebViewClient
 {

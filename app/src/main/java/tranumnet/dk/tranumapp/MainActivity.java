@@ -1,6 +1,5 @@
 package tranumnet.dk.tranumapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,7 +23,6 @@ public class MainActivity extends ActionBarActivity
 {
 
     private WebView mWebView;
-    private String myToast = "Der er ingen internet forbindelse i øjeblikket, venlist prøv igen senere.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,6 +65,7 @@ public class MainActivity extends ActionBarActivity
         else
         {
             //toast ved ingen forbindelse 2 gange for længere tid vist (ca. 3,5 sek pr stk. i alt 7 sek).
+            String myToast = "Der er ingen internet forbindelse i øjeblikket, venlist prøv igen senere.";
             Toast.makeText(this, myToast, Toast.LENGTH_LONG).show();
             Toast.makeText(this, myToast,Toast.LENGTH_LONG).show();
         }
@@ -84,12 +83,6 @@ public class MainActivity extends ActionBarActivity
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-
-    void Showtoast(String message)
-    {
-        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
     }
 
 
@@ -143,8 +136,7 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState)
         {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_main, container, false);
         }
     }
 
