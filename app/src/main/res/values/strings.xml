@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tranum</string>
+    <string name="startscreen_splash">Stifinder</string>
+    <string name="startscreen_af"><i>Udviklet af:</i></string>
+    <string name="startscreen_stifinder"><u><b><i>Stifinder</i></b></u></string>
+    <string name="startscreen_frem"><i>- Frem mod målet</i></string>
 
     <string name="action_update">Opdater</string>
     <string name="action_quit">Afslut</string>
